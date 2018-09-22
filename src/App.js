@@ -46,7 +46,7 @@ handleShuffle = () => {
 }
 
 handleClick = id => {
-  console.log(id)
+
   let selected = false;
 
   //Check if new character selected is already selected
@@ -76,6 +76,7 @@ handleClick = id => {
 
 updateScore = () => {
   const newScore = this.state.currentScore + 1;
+  console.log("New score" + newScore)
   this.setState({
     currentScore: newScore,
     message: "You got it! Keep going!"
@@ -93,7 +94,7 @@ resetGame = () => {
     currentScore: 0,
     topScore: this.state.topScore,
     selectedCharactersArray: [],
-    message: "",
+    message: "You guessed wrong!",
   })
 
   this.handleShuffle()
@@ -104,9 +105,9 @@ render()
   return(
     <Wrapper>
       <Navbar
-        message={this.message}
-        topScore={this.topScore}
-        currentScore={this.currentScore}
+        message={this.state.message}
+        topScore={this.state.topScore}
+        currentScore={this.state.currentScore}
       />
       {
         this.state.characters.map(character => (
